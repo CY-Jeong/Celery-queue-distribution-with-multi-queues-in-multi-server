@@ -3,8 +3,13 @@ version: "3.5"
 services:
   celery:
     container_name: celery
-    image:
-
+    build:
+      context: .
+      dockerfile: dockerfile
+    links:
+      - rabbitmq
+    depends_on:
+      - rabbitmq
       
   rabbitmq:
     container_name: rabbitmq
