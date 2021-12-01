@@ -1,16 +1,43 @@
 version: "3.5"
 
 services:
-  celery:
-    container_name: celery
+  celery_server_1:
+    container_name: celery_server_1
     networks:
       - local-network
     build:
       context: .
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     depends_on:
       - rabbitmq
-      
+    command:
+      - -Q
+      - server1
+  celery_server_2:
+    container_name: celery_server_2
+    networks:
+      - local-network
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - rabbitmq
+    command:
+      - -Q
+      - server2
+  celery_server_3:
+    container_name: celery_server_3
+    networks:
+      - local-network
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - rabbitmq
+    command:
+      - -Q
+      - server3
+    
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:3-management
