@@ -1,10 +1,11 @@
 from test_celery import celery
+from task import delay_sec
 
-second = 5
-queue = ""
+second = {"num": 5}
+queue_name = "server1"
 
 celery.send_task(
-    "task.delay_sec",
+    "app.task.delay_sec",
     kwargs=second,
     queue=queue_name
 )

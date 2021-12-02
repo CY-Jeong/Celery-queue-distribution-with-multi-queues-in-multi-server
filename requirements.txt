@@ -1,2 +1,2 @@
-celery>=4.2.0rc4
+celery>=5.2.1
 kombu>=5.2.2

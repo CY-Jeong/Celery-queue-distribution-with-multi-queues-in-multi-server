@@ -1,8 +1,9 @@
-from .test_celery import celery
+from celery import shared_task
 import time
 
-@celery.shared_task(bind=True)
-def delay_sec(num: int):
+@shared_task(bind=True)
+def delay_sec(self, *args, **kwargs):
+    num = kwargs["num"]
     print(f" waiting {num} seconds...")
     print(f" waiting {num} seconds...")
     time.sleep(num)

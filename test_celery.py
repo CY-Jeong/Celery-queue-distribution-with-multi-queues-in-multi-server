@@ -3,7 +3,8 @@ from kombu import Queue
 
 celery = Celery(
     "tasks",
-    broker='amqp://root:example@rabbitmq:5672'
+    broker='amqp://root:example@rabbitmq:5672',
+    include=["app.task"]
 )
 celery.conf.task_queues = (
     Queue('server1', routing_key='server1'),
