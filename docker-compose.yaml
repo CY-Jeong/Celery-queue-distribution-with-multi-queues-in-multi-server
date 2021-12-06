@@ -22,6 +22,7 @@ services:
     depends_on:
       - rabbitmq
     command: celery -A app.test_celery worker --loglevel=DEBUG -Q server2
+    
   celery_server_3:
     container_name: celery_server_3
     networks:
